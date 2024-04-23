@@ -1,58 +1,70 @@
 package proyectouno;
 
-import javafx.beans.value.ChangeListener;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
-public class primerPControl {
-    //Contenedores:
-    @FXML Pane panelPrincipal;
-    @FXML Pane panelCambiaColores;
-
-    //Sliders y textField
-    @FXML Slider R;
-    @FXML Slider G;
-    @FXML Slider B;
-
-    @FXML TextField RUno;
-    @FXML TextField GUno;
-    @FXML TextField BUno;
-
-    @FXML Label muestraValoresRGB;
-
-    
+public class primerPControl implements Initializable {
+    // Contenedores:
     @FXML
-    public void initialize() {
-        // Asignar controladores de eventos a los sliders
-        R.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
-        G.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
-        B.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
-        
+    Pane panelPrincipal;
+    @FXML
+    Pane panelCambiaColores;
+
+    // Sliders y textField
+    @FXML
+    Slider R;
+    @FXML
+    Slider G;
+    @FXML
+    Slider B;
+
+    @FXML
+    TextField RUno;
+    @FXML
+    TextField GUno;
+    @FXML
+    TextField BUno;
+
+    @FXML
+    Label muestraValoresRGB;
+
+    private void cambiamosColor() {
+        int rValue = (int) R.getValue();
+        int gValue = (int) G.getValue();
+        int bValue = (int) B.getValue();
+
+        RUno.setText(String.valueOf(rValue));
+        GUno.setText(String.valueOf(gValue));
+        BUno.setText(String.valueOf(bValue));
+
+        String hex = String.format("#%02x%02x%02x", rValue, gValue, bValue);
+        panelCambiaColores.setStyle("-fx-background-color: " + hex);
+        muestraValoresRGB.setText(hex);
     }
 
-    private void updateLabelColor() {
-        // Obtener los valores de los sliders
-        double red = R.getValue();
-        double green = G.getValue();
-        double blue = B.getValue();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        R.valueProperty().addListener((observable, oldValue, newValue) -> cambiamosColor());
+        G.valueProperty().addListener((observable, oldValue, newValue) -> cambiamosColor());
+        B.valueProperty().addListener((observable, oldValue, newValue) -> cambiamosColor());
 
-        double red2 = Double.parseDouble(RUno.getText());
-        double green2 = Double.parseDouble(GUno.getText());
-        double blue2 = Double.parseDouble(BUno.getText());
+        RUno.textProperty().addListener((observable, oldValue, newValue) -> {
+            R.setValue(Double.parseDouble(newValue));
+        });
 
-        R.setValue(red2);
-        G.setValue(green2);
-        B.setValue(blue2);
+        GUno.textProperty().addListener((observable, oldValue, newValue) -> {
+            G.setValue(Double.parseDouble(newValue));
+        });
 
-        // Crear un nuevo color con los valores de los sliders
-        //Color color = Color.rgb((int) red, (int) green, (int) blue);
-        Color color = Color.rgb((int) red2, (int) green2, (int) blue2);
-
-        // Actualizar el color del label
-        muestraValoresRGB.setTextFill(color);
+        BUno.textProperty().addListener((observable, oldValue, newValue) -> {
+            B.setValue(Double.parseDouble(newValue));
+        });
     }
 }
