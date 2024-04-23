@@ -1,18 +1,14 @@
 package proyectouno;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-public class primerPControl implements Initializable{
+public class primerPControl {
     //Contenedores:
     @FXML Pane panelPrincipal;
     @FXML Pane panelCambiaColores;
@@ -28,26 +24,35 @@ public class primerPControl implements Initializable{
 
     @FXML Label muestraValoresRGB;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Color color = new Color(0, 0, 0, 0);
-        String enteredByUser = "abcdef";
-        panelCambiaColores.setStyle("-fx-background-color: #ffffff");
-
-        String primeHex = Double.toHexString(R.getValue());
-        String segundoHex = Double.toHexString(G.getValue());
-        String tercerHex = Double.toHexString(B.getValue());
-
-        RUno.setText(primeHex);
-        GUno.setText(segundoHex);
-        BUno.setText(tercerHex);
-
-        muestraValoresRGB.setText(primeHex+segundoHex+tercerHex);
+    
+    @FXML
+    public void initialize() {
+        // Asignar controladores de eventos a los sliders
+        R.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
+        G.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
+        B.valueProperty().addListener((observable, oldValue, newValue) -> updateLabelColor());
+        
     }
 
+    private void updateLabelColor() {
+        // Obtener los valores de los sliders
+        double red = R.getValue();
+        double green = G.getValue();
+        double blue = B.getValue();
 
+        double red2 = Double.parseDouble(RUno.getText());
+        double green2 = Double.parseDouble(GUno.getText());
+        double blue2 = Double.parseDouble(BUno.getText());
 
+        R.setValue(red2);
+        G.setValue(green2);
+        B.setValue(blue2);
 
+        // Crear un nuevo color con los valores de los sliders
+        //Color color = Color.rgb((int) red, (int) green, (int) blue);
+        Color color = Color.rgb((int) red2, (int) green2, (int) blue2);
 
-
+        // Actualizar el color del label
+        muestraValoresRGB.setTextFill(color);
+    }
 }
