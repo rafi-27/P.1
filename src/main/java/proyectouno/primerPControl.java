@@ -36,15 +36,15 @@ public class primerPControl implements Initializable {
     Label muestraValoresRGB;
 
     private void cambiamosColor() {
-        int rValue = (int) R.getValue();
-        int gValue = (int) G.getValue();
-        int bValue = (int) B.getValue();
+        int rColor=(int)R.getValue();
+        int gColor=(int)G.getValue();
+        int bColor=(int)B.getValue();
 
-        RUno.setText(String.valueOf(rValue));
-        GUno.setText(String.valueOf(gValue));
-        BUno.setText(String.valueOf(bValue));
+        RUno.setText(String.valueOf(rColor));
+        GUno.setText(String.valueOf(gColor));
+        BUno.setText(String.valueOf(bColor));
 
-        String hex = String.format("#%02x%02x%02x", rValue, gValue, bValue);
+        String hex = String.format("#%02x%02x%02x", rColor, gColor, bColor);
         panelCambiaColores.setStyle("-fx-background-color: " + hex);
         muestraValoresRGB.setText(hex);
     }
