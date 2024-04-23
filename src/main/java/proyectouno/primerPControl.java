@@ -28,14 +28,6 @@ public class primerPControl implements Initializable{
 
     @FXML Label muestraValoresRGB;
 
-    @FXML Pane someButton;
-
-    @FXML
-    public void makeButtonWhite(MouseEvent event)
-    {
-        someButton.setStyle("-fx-background-color: #ffffff");
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Color color = new Color(0, 0, 0, 0);
