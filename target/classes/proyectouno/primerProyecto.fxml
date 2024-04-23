@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="panelPrincipal" prefHeight="394.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectouno.primerPControl">
+   <children>
+      <HBox layoutX="237.0" layoutY="78.0" prefHeight="262.0" prefWidth="267.0" spacing="100.0">
+         <children>
+            <Slider fx:id="R" max="255.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="G" max="255.0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" />
+            <Slider fx:id="B" max="255.0" orientation="VERTICAL" prefHeight="262.0" prefWidth="51.0" showTickLabels="true" showTickMarks="true" />
+         </children>
+      </HBox>
+      <HBox layoutX="241.0" layoutY="44.0" prefHeight="17.0" prefWidth="260.0" spacing="108.0">
+         <children>
+            <Label text="R">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="G">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="17.0" prefWidth="11.0" text="B">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane fx:id="panelCambiaColores" layoutX="14.0" layoutY="25.0" prefHeight="262.0" prefWidth="200.0" />
+      <HBox layoutX="223.0" layoutY="347.0" spacing="70.0">
+         <children>
+            <TextField fx:id="RUno" prefHeight="25.0" prefWidth="48.0" />
+            <TextField fx:id="GUno" prefHeight="25.0" prefWidth="48.0" />
+            <TextField fx:id="BUno" prefHeight="25.0" prefWidth="48.0" />
+         </children>
+      </HBox>
+      <Label fx:id="muestraValoresRGB" alignment="CENTER" layoutX="27.0" layoutY="309.0" prefHeight="63.0" prefWidth="175.0" text="HEX">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
