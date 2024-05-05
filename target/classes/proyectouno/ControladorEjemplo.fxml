@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyectouno.ControladorEjemplo">
+   <children>
+      <TextField fx:id="mostrarNumeritos" editable="false" layoutX="14.0" layoutY="25.0" />
+      <Slider fx:id="sliderPa" layoutX="177.0" layoutY="19.0" max="1000.0" prefHeight="37.0" prefWidth="335.0" showTickLabels="true" showTickMarks="true" />
+   </children>
+</Pane>
